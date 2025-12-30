@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs'
-import cloudinary from "../config/cloudinary.js";
+// import cloudinary from "../config/cloudinary.js";
 import Admin from '../models/admin.models.js'
 import generateToken from "../config/token.js"
 
