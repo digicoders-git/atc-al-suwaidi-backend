@@ -15,19 +15,18 @@ export const create = async (req,res)=> {
     }
     const hashedPassword = await bcrypt.hash(password, 10)
 
-    let profilePhotoUrl = "";
-    if (req.file) {
-      const img = await cloudinary.uploader.upload(req.file.path, {
-        folder: "admin_profiles"
-      })
-      profilePhotoUrl = img.secure_url;
-    }
+    // let profilePhotoUrl = "";
+    // if (req.file) {
+    //   const img = await cloudinary.uploader.upload(req.file.path, {
+    //     folder: "admin_profiles"
+    //   })
+    //   profilePhotoUrl = img.secure_url;
+    // }
 
     const admin = await Admin.create({
       name,
       email,
-      password: hashedPassword,
-      profilePhoto: profilePhotoUrl
+      password: hashedPassword
     })
     return res.status(201).json({ message: "Admin created", admin })
   } catch (error) {
