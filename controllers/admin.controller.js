@@ -95,12 +95,12 @@ export const updateAdmin = async (req, res) => {
     }
 
     // Update profile photo if provided
-    if (req.file) {
-      const img = await cloudinary.uploader.upload(req.file.path, {
-        folder: "admin_profiles"
-      });
-      admin.profilePhoto = img.secure_url;
-    }
+    // if (req.file) {
+    //   const img = await cloudinary.uploader.upload(req.file.path, {
+    //     folder: "admin_profiles"
+    //   });
+    //   admin.profilePhoto = img.secure_url;
+    // }
 
     await admin.save();
 
