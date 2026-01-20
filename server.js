@@ -11,6 +11,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import consultations from "./routes/consultation.routes.js";
 import demoRoute from "./routes/demo.routes.js";
+import jobApplicationRouter from "./routes/jobApplication.routes.js";
 
 const port = process.env.PORT || 5000;
 
@@ -25,6 +26,7 @@ app.use('/contact',contactRoute)
 app.use('/demo',demoRoute)
 app.use('/career',careerRouter)
 app.use('/consultation',consultations)
+app.use('/job-application',jobApplicationRouter)
 
 
 const __filename = fileURLToPath(import.meta.url);

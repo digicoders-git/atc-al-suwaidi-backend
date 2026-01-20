@@ -1,0 +1,389 @@
+{
+	"info": {
+		"_postman_id": "job-application-api-collection",
+		"name": "Job Application API - ATC Al Suwaidi",
+		"description": "Complete API collection for Job Application management with CV/Resume upload functionality",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Job Application",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fullName",
+							"value": "John Doe",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "john.doe@example.com",
+							"type": "text"
+						},
+						{
+							"key": "phoneNumber",
+							"value": "9876543210",
+							"type": "text"
+						},
+						{
+							"key": "coverLetter",
+							"value": "I am very interested in this position and believe my skills would be a great fit for your company. I have extensive experience in software development and would love to contribute to your team.",
+							"type": "text"
+						},
+						{
+							"key": "resume",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/job-application/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"job-application",
+						"create"
+					]
+				},
+				"description": "Create a new job application with resume upload"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fullName",
+									"value": "John Doe",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "john.doe@example.com",
+									"type": "text"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "9876543210",
+									"type": "text"
+								},
+								{
+									"key": "coverLetter",
+									"value": "I am very interested in this position.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/job-application/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"job-application",
+								"create"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"success\": true,\n  \"message\": \"Job application submitted successfully\",\n  \"data\": {\n    \"_id\": \"674a1b2c3d4e5f6789012345\",\n    \"fullName\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"phoneNumber\": \"9876543210\",\n    \"resume\": {\n      \"filename\": \"John Doe-1732876332123-456789012.pdf\",\n      \"path\": \"http://localhost:3300/upload/John Doe-1732876332123-456789012.pdf\"\n    },\n    \"coverLetter\": \"I am very interested in this position.\",\n    \"createdAt\": \"2024-11-29T10:30:45.123Z\",\n    \"updatedAt\": \"2024-11-29T10:30:45.123Z\"\n  }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Job Applications",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/job-application/get",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"job-application",
+						"get"
+					]
+				},
+				"description": "Retrieve all job applications"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/job-application/get",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"job-application",
+								"get"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"success\": true,\n  \"count\": 1,\n  \"data\": [\n    {\n      \"_id\": \"674a1b2c3d4e5f6789012345\",\n      \"fullName\": \"John Doe\",\n      \"email\": \"john.doe@example.com\",\n      \"phoneNumber\": \"9876543210\",\n      \"resume\": {\n        \"filename\": \"John Doe-1732876332123-456789012.pdf\",\n        \"path\": \"http://localhost:3300/upload/John Doe-1732876332123-456789012.pdf\"\n      },\n      \"coverLetter\": \"I am very interested in this position.\",\n      \"createdAt\": \"2024-11-29T10:30:45.123Z\",\n      \"updatedAt\": \"2024-11-29T10:30:45.123Z\"\n    }\n  ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Single Job Application",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/job-application/get/{{applicationId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"job-application",
+						"get",
+						"{{applicationId}}"
+					]
+				},
+				"description": "Retrieve a specific job application by ID"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/job-application/get/674a1b2c3d4e5f6789012345",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"job-application",
+								"get",
+								"674a1b2c3d4e5f6789012345"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"success\": true,\n  \"data\": {\n    \"_id\": \"674a1b2c3d4e5f6789012345\",\n    \"fullName\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"phoneNumber\": \"9876543210\",\n    \"resume\": {\n      \"filename\": \"John Doe-1732876332123-456789012.pdf\",\n      \"path\": \"http://localhost:3300/upload/John Doe-1732876332123-456789012.pdf\"\n    },\n    \"coverLetter\": \"I am very interested in this position.\",\n    \"createdAt\": \"2024-11-29T10:30:45.123Z\",\n    \"updatedAt\": \"2024-11-29T10:30:45.123Z\"\n  }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Job Application",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fullName",
+							"value": "John Smith",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "john.smith@example.com",
+							"type": "text"
+						},
+						{
+							"key": "phoneNumber",
+							"value": "9876543211",
+							"type": "text"
+						},
+						{
+							"key": "coverLetter",
+							"value": "Updated cover letter with more details about my experience and qualifications.",
+							"type": "text"
+						},
+						{
+							"key": "resume",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/job-application/update/{{applicationId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"job-application",
+						"update",
+						"{{applicationId}}"
+					]
+				},
+				"description": "Update an existing job application (resume upload is optional)"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fullName",
+									"value": "John Smith",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "john.smith@example.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/job-application/update/674a1b2c3d4e5f6789012345",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"job-application",
+								"update",
+								"674a1b2c3d4e5f6789012345"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"success\": true,\n  \"message\": \"Job application updated successfully\",\n  \"data\": {\n    \"_id\": \"674a1b2c3d4e5f6789012345\",\n    \"fullName\": \"John Smith\",\n    \"email\": \"john.smith@example.com\",\n    \"phoneNumber\": \"9876543210\",\n    \"resume\": {\n      \"filename\": \"John Doe-1732876332123-456789012.pdf\",\n      \"path\": \"http://localhost:3300/upload/John Doe-1732876332123-456789012.pdf\"\n    },\n    \"coverLetter\": \"Updated cover letter content.\",\n    \"createdAt\": \"2024-11-29T10:30:45.123Z\",\n    \"updatedAt\": \"2024-11-29T10:35:22.456Z\"\n  }\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Job Application",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/job-application/delete/{{applicationId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"job-application",
+						"delete",
+						"{{applicationId}}"
+					]
+				},
+				"description": "Delete a job application and its associated resume file"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/job-application/delete/674a1b2c3d4e5f6789012345",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"job-application",
+								"delete",
+								"674a1b2c3d4e5f6789012345"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"success\": true,\n  \"message\": \"Job application deleted successfully\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3300",
+			"type": "string"
+		},
+		{
+			"key": "applicationId",
+			"value": "674a1b2c3d4e5f6789012345",
+			"type": "string"
+		}
+	]
+}
