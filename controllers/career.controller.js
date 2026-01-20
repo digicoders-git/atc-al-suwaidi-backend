@@ -181,6 +181,7 @@ export const remove = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       message: "Internal server error",
+      // server error
       error: error.message
     });
   }
